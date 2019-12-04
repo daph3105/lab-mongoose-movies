@@ -37,7 +37,6 @@ router.post('/create-the-celebrity', (req, res, next)=>{
 
 
 router.get('/all-celebrities', (req, res, next) => {
-  console.log(req.session)
   Celebrity.find()
   .then((allTheCelebrities)=>{
     res.render('allCelebrities', {theCelebrities: allTheCelebrities});
@@ -48,17 +47,6 @@ router.get('/all-celebrities', (req, res, next) => {
 });
 
 
-router.get('/:theIdOfTheCelebrity', (req, res, next)=>{
-  let id = req.params.theIdOfTheCelebrity;
-
-  Celebrity.findById(id)
-  .then((theCelebrity)=>{
-    res.render('singleCelebrity', {celebrity: theCelebrity})
-  })
-  .catch((err)=>{
-    next(err);
-  })
-})
 
 
 router.post('/delete/:theID', (req, res, next)=>{
@@ -105,9 +93,28 @@ router.post('/update', (req, res, next)=>{
 
 
 router.get('/movies', (req, res, next) => {
-  Movie.find().then(movies => {
-    console.log(movies);
+  Movie.find()
+  .then((movies) => {
+    console.log(movies)
     res.render('AllMovies', {theMovies: movies});
+  })
+  .catch((err)=>{
+    next(err);
+  })
+});
+
+
+
+
+router.get('/:theIdOfTheCelebrity', (req, res, next)=>{
+  let id = req.params.theIdOfTheCelebrity;
+
+  Celebrity.findById(id)
+  .then((theCelebrity)=>{
+    res.render('singleCelebrity', {celebrity: theCelebrity})
+  })
+  .catch((err)=>{
+    next(err);
   })
 })
 
