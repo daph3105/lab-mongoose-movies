@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit the Celebrity</title>
+</head>
+<body>
+<h2>Edit {{currentCelebrity.name}} </h2>
+
+<form action="/update" method="POST">
+
+<p>Name</p>
+<input type="text" name="name" value="{{currentCelebrity.name}}">
+
+<p>Occupation</p>
+<input type="text" name="occupation" value="{{currentCelebrity.occupation}}">
+
+
+<p>Catch Phrase</p>
+<input type="text" name="catchPhrase" value="{{currentCelebrity.catchPhrase}}">
+
+<input type="hidden" value="{{currentCelebrity._id}}" name="_id">
+
+
+<button>Save!</button>
+</form>   
+</body>
+</html>
+
+
+
+
